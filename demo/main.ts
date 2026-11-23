@@ -99,8 +99,8 @@ const hass: Hass = {
 };
 
 const cards = ['full', 'mini'].map((id) => document.getElementById(id) as any);
-cards[0].setConfig({ type: 'custom:spotify-panel-card', entity: 'media_player.spotifyplus', height: 640 });
-cards[1].setConfig({ type: 'custom:spotify-panel-card', entity: 'media_player.spotifyplus', mode: 'mini' });
+cards[0].setConfig({ type: 'custom:omnium-music', entity: 'media_player.spotifyplus', height: 640 });
+cards[1].setConfig({ type: 'custom:omnium-music', entity: 'media_player.spotifyplus', mode: 'mini' });
 
 function push() {
   hass.states = { 'media_player.spotifyplus': player() };
