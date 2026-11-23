@@ -1,8 +1,8 @@
-# Spotify Panel Card
+# Omnium Music
 
 A Home Assistant Lovelace card with a touch-friendly **Spotify panel**: what is playing, search, your library and the speaker picker, in one screen. A compact **mini** mode shows only what is playing and opens the full panel when tapped.
 
-![Spotify Panel Card: the full panel with the library, and the mini player beside it](https://raw.githubusercontent.com/peter-gabriel/spotify-panel-card/main/docs/screenshot.png)
+![Omnium Music: the full panel with the library, and the mini player beside it](https://raw.githubusercontent.com/peter-gabriel/omnium-music/main/docs/screenshot.png)
 
 *Screenshots use fictional songs and artists.*
 
@@ -26,31 +26,31 @@ The card is not in the default store yet, so you add it by its GitHub link. Upda
 ### Marketplace (newer Home Assistant versions)
 
 1. Open **Marketplace** in the sidebar and click **Add from link** (top right).
-2. Paste `https://github.com/peter-gabriel/spotify-panel-card` and click **Add**.
-3. Search for **Spotify Panel Card**, open it and click **Install**.
+2. Paste `https://github.com/peter-gabriel/omnium-music` and click **Add**.
+3. Search for **Omnium Music**, open it and click **Install**.
 4. Reload the browser when asked.
 
 The Marketplace adds the dashboard resource for you.
 
 ### HACS
 
-1. In HACS → ⋮ → **Custom repositories**, add `https://github.com/peter-gabriel/spotify-panel-card` with the type **Dashboard**.
-2. Search for **Spotify Panel Card**, download it, and reload the browser.
+1. In HACS → ⋮ → **Custom repositories**, add `https://github.com/peter-gabriel/omnium-music` with the type **Dashboard**.
+2. Search for **Omnium Music**, download it, and reload the browser.
 
 HACS adds the dashboard resource for you.
 
 ### Manual
 
-1. Download `spotify-panel-card.js` from the [latest release](https://github.com/peter-gabriel/spotify-panel-card/releases/latest).
+1. Download `omnium-music.js` from the [latest release](https://github.com/peter-gabriel/omnium-music/releases/latest).
 2. Copy it to `/config/www/`.
-3. Add it under **Settings → Dashboards → ⋮ → Resources** as `/local/spotify-panel-card.js`, with the type *JavaScript module*.
+3. Add it under **Settings → Dashboards → ⋮ → Resources** as `/local/omnium-music.js`, with the type *JavaScript module*.
 
-If you switch from a manual install to the Marketplace or HACS, delete the old `/local/spotify-panel-card.js` resource. Otherwise the card is loaded twice.
+If you switch from a manual install to the Marketplace or HACS, delete the old `/local/omnium-music.js` resource. Otherwise the card is loaded twice.
 
 ## Configuration
 
 ```yaml
-type: custom:spotify-panel-card
+type: custom:omnium-music
 entity: media_player.spotifyplus_yourname   # required
 mode: full                                  # full | mini
 height: 600                                 # full mode: px or any CSS height, e.g. 100%
@@ -79,15 +79,15 @@ Set these CSS variables (for example with card-mod or a theme) to match your das
 
 ## Using the panel in your own card
 
-The panel is also a plain web component, `<spotify-panel>`, so other cards can embed it. [HADash 3D Card](https://github.com/peter-gabriel/hadash-card) does this for its music button.
+The panel is also a plain web component, `<omnium-music-panel>`, so other cards can embed it. [Omnium Home 3D](https://github.com/peter-gabriel/omnium-home-3d) does this for its music button.
 
 ```ts
-import 'spotify-panel-card/panel';
+import 'omnium-music/panel';
 
-html`<spotify-panel .hass=${hass} entity="media_player.spotifyplus_yourname" mode="full"></spotify-panel>`;
+html`<omnium-music-panel .hass=${hass} entity="media_player.spotifyplus_yourname" mode="full"></omnium-music-panel>`;
 ```
 
-- `mode="mini"` fires `spotify-panel-open` when tapped.
+- `mode="mini"` fires `omnium-music-open` when tapped.
 - Errors are sent as `hass-notification` events, which Home Assistant shows as a toast. Catch them to show your own.
 
 ## Development
@@ -95,7 +95,7 @@ html`<spotify-panel .hass=${hass} entity="media_player.spotifyplus_yourname" mod
 ```bash
 npm install
 npm test          # library mapping, i18n and helper tests
-npm run build     # outputs dist/spotify-panel-card.js
+npm run build     # outputs dist/omnium-music.js
 npm run dev       # demo with a fake Home Assistant on http://localhost:5183
 ```
 
@@ -105,7 +105,7 @@ npm run dev       # demo with a fake Home Assistant on http://localhost:5183
 npm run ha
 ```
 
-This rebuilds on every change and serves the file at `http://<your-machine-ip>:5184/spotify-panel-card.js`. Add that URL as a resource on a test dashboard, then refresh Home Assistant after each change.
+This rebuilds on every change and serves the file at `http://<your-machine-ip>:5184/omnium-music.js`. Add that URL as a resource on a test dashboard, then refresh Home Assistant after each change.
 
 ### Adding a language
 

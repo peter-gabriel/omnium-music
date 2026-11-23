@@ -19,9 +19,9 @@ Nothing is pushed straight to `main` or `develop`: every change goes through a p
 ```bash
 npm install
 npm test          # library mapping, i18n and helper tests
-npm run build     # outputs dist/spotify-panel-card.js
+npm run build     # outputs dist/omnium-music.js
 npm run dev       # demo with a fake Home Assistant on http://localhost:5183
-npm run ha        # rebuild on change and serve on http://<your-machine-ip>:5184/spotify-panel-card.js
+npm run ha        # rebuild on change and serve on http://<your-machine-ip>:5184/omnium-music.js
 ```
 
 To try your build in Home Assistant, add the `npm run ha` URL as a dashboard resource on a test dashboard. Then refresh HA after each change.
@@ -38,5 +38,5 @@ UI strings live in [`src/i18n.ts`](src/i18n.ts). Please add every new string to 
 4. Publish a GitHub release with the tag `vX.Y.Z` on `main`. The **Release** workflow then:
    - checks that the tag matches `package.json`;
    - runs the tests and builds the card;
-   - attaches `spotify-panel-card.js` to the release, which is the file HACS installs.
+   - attaches `omnium-music.js` to the release, which is the file HACS installs.
 5. Merge `main` back into `develop`, through a PR.
