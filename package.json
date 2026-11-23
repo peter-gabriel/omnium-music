@@ -1,6 +1,6 @@
 {
   "name": "omnium-music",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Home Assistant card: Spotify panel with search, library and speaker picker (SpotifyPlus), plus a compact now-playing mode",
   "type": "module",
   "license": "MIT",
