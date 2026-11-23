@@ -1,0 +1,43 @@
+{
+  "name": "spotify-panel-card",
+  "version": "0.1.0",
+  "description": "Home Assistant card: Spotify panel with search, library and speaker picker (SpotifyPlus), plus a compact now-playing mode",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peter-gabriel/spotify-panel-card.git"
+  },
+  "keywords": [
+    "home-assistant",
+    "lovelace",
+    "custom-card",
+    "hacs",
+    "spotify",
+    "spotifyplus",
+    "media-player"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./panel": "./src/spotify-panel.ts"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "ha": "vite build --watch & vite preview",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "lit": "^3.3.0"
+  },
+  "devDependencies": {
+    "lit": "^3.3.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.6",
+    "vitest": "^3.2.7"
+  }
+}

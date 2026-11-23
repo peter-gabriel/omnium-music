@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Panel demo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        background: #0b0d10;
+        color: #eef0f3;
+        font-family: system-ui, sans-serif;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        body {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <spotify-panel-card id="full"></spotify-panel-card>
+    <spotify-panel-card id="mini"></spotify-panel-card>
+    <script type="module" src="/demo/main.ts"></script>
+  </body>
+</html>

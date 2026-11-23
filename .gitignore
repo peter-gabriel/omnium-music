@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output: the release workflow builds it and attaches it to each GitHub release.
+dist/
+.vite/
+*.tsbuildinfo
+
+# Tests
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local env and secrets (never commit tokens or keys)
+.env
+.env.*
+*.local
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Claude Code local settings
+.claude/settings.local.json
+
+.claude/
