@@ -1,18 +1,18 @@
 import { LitElement, css, html, nothing } from 'lit';
 import type { Hass, PanelCardConfig } from './types';
 import { ICON_CLOSE } from './icons';
-import './spotify-panel';
+import './music-panel';
 import { langOf, strings } from './i18n';
 
 /**
- * Card do Lovelace em volta do <spotify-panel>.
+ * Card do Lovelace em volta do <omnium-music-panel>.
  *
- * type: custom:spotify-panel-card
+ * type: custom:omnium-music
  * entity: media_player.spotifyplus_xxx
  * mode: full | mini
  * height: 600
  */
-export class SpotifyPanelCard extends LitElement {
+export class OmniumMusicCard extends LitElement {
   static properties = {
     hass: { attribute: false },
     _config: { state: true },
@@ -53,19 +53,19 @@ export class SpotifyPanelCard extends LitElement {
     const h = c.height ?? 600;
     if (c.mode === 'mini')
       return html`<ha-card class="mini">
-          <spotify-panel .hass=${this.hass} entity=${c.entity} mode="mini" @spotify-panel-open=${() => (this._open = true)}></spotify-panel>
+          <omnium-music-panel .hass=${this.hass} entity=${c.entity} mode="mini" @omnium-music-open=${() => (this._open = true)}></omnium-music-panel>
           ${this._idle()}
         </ha-card>
         ${this._open
           ? html`<div class="overlay" @click=${(e: Event) => e.target === e.currentTarget && (this._open = false)}>
               <div class="dialog">
-                <spotify-panel .hass=${this.hass} entity=${c.entity} mode="full" .card=${c.card} style="--sp-nav-gap:60px"></spotify-panel>
+                <omnium-music-panel .hass=${this.hass} entity=${c.entity} mode="full" .card=${c.card} style="--sp-nav-gap:60px"></omnium-music-panel>
                 <button class="close" @click=${() => (this._open = false)} title=${strings(langOf(this.hass)).close}>${ICON_CLOSE}</button>
               </div>
             </div>`
           : nothing}`;
     return html`<ha-card class="full" style="height:${typeof h === 'number' ? `${h}px` : h}">
-      <spotify-panel .hass=${this.hass} entity=${c.entity} mode="full" .card=${c.card}></spotify-panel>
+      <omnium-music-panel .hass=${this.hass} entity=${c.entity} mode="full" .card=${c.card}></omnium-music-panel>
     </ha-card>`;
   }
 
@@ -85,7 +85,7 @@ export class SpotifyPanelCard extends LitElement {
       background: var(--sp-card-bg, #121418);
       color: #eef0f3;
     }
-    ha-card.full spotify-panel {
+    ha-card.full omnium-music-panel {
       height: 100%;
     }
     ha-card.mini {
@@ -127,7 +127,7 @@ export class SpotifyPanelCard extends LitElement {
       max-width: 1200px;
       margin: 0 auto;
     }
-    .dialog spotify-panel {
+    .dialog omnium-music-panel {
       height: 100%;
     }
     .close {
@@ -152,11 +152,11 @@ export class SpotifyPanelCard extends LitElement {
   `;
 }
 
-if (!customElements.get('spotify-panel-card')) {
-  customElements.define('spotify-panel-card', SpotifyPanelCard);
+if (!customElements.get('omnium-music')) {
+  customElements.define('omnium-music', OmniumMusicCard);
   ((window as any).customCards ??= []).push({
-    type: 'spotify-panel-card',
-    name: 'Spotify Panel',
+    type: 'omnium-music',
+    name: 'Omnium Music',
     description: 'Now playing, search, library and speaker picker (SpotifyPlus)',
     preview: false,
   });

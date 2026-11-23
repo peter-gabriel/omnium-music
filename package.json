@@ -1,12 +1,12 @@
 {
-  "name": "spotify-panel-card",
+  "name": "omnium-music",
   "version": "0.1.0",
   "description": "Home Assistant card: Spotify panel with search, library and speaker picker (SpotifyPlus), plus a compact now-playing mode",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/peter-gabriel/spotify-panel-card.git"
+    "url": "https://github.com/peter-gabriel/omnium-music.git"
   },
   "keywords": [
     "home-assistant",
@@ -19,7 +19,7 @@
   ],
   "exports": {
     ".": "./src/index.ts",
-    "./panel": "./src/spotify-panel.ts"
+    "./panel": "./src/music-panel.ts"
   },
   "files": [
     "src",

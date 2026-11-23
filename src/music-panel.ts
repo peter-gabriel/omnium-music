@@ -22,11 +22,11 @@ type Tab = 'search' | 'recent' | 'liked' | 'playlists' | 'speakers';
  * Painel de música: tocando agora + busca + biblioteca (SpotifyPlus) + escolha da caixa.
  * Funciona com qualquer media_player; busca e biblioteca aparecem só com o SpotifyPlus.
  *
- * <spotify-panel .hass=${hass} entity="media_player.spotifyplus" mode="full|mini"></spotify-panel>
+ * <omnium-music-panel .hass=${hass} entity="media_player.spotifyplus" mode="full|mini"></omnium-music-panel>
  *
- * Eventos: `spotify-panel-open` (toque no mini), `hass-notification` (erros, padrão do HA).
+ * Eventos: `omnium-music-open` (toque no mini), `hass-notification` (erros, padrão do HA).
  */
-export class SpotifyPanel extends LitElement {
+export class OmniumMusicPanel extends LitElement {
   static properties = {
     hass: { attribute: false },
     entity: {},
@@ -188,7 +188,7 @@ export class SpotifyPanel extends LitElement {
       e.stopPropagation();
       fn();
     };
-    const open = () => this.dispatchEvent(new CustomEvent('spotify-panel-open', { bubbles: true, composed: true }));
+    const open = () => this.dispatchEvent(new CustomEvent('omnium-music-open', { bubbles: true, composed: true }));
     return html`<div class="np ${st.state === 'playing' ? 'playing' : ''}" @click=${open}>
       <div class="np-top">
         ${a.entity_picture ? html`<img class="np-art" src=${a.entity_picture} alt="" />` : html`<i class="np-art">${ICON_MUSIC}</i>`}
@@ -407,10 +407,10 @@ export class SpotifyPanel extends LitElement {
   }
 }
 
-if (!customElements.get('spotify-panel')) customElements.define('spotify-panel', SpotifyPanel);
+if (!customElements.get('omnium-music-panel')) customElements.define('omnium-music-panel', OmniumMusicPanel);
 
 declare global {
   interface HTMLElementTagNameMap {
-    'spotify-panel': SpotifyPanel;
+    'omnium-music-panel': OmniumMusicPanel;
   }
 }
